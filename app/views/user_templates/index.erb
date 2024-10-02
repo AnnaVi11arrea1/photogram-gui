@@ -1,0 +1,28 @@
+<h1>List of users</h1>
+
+<form action="" method="post">
+
+<label for="username">Username</lable>
+<input type="text" id="username" name="user_name" required>
+
+<button type="submit">Add user</button>
+</form>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th></th>
+  </tr>
+<% User.all.each do |user|%>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.username %></td>
+    <td>
+      <a href="/users/<%= user.id %>/edit">Show details</a>
+    </td>
+  </tr>
+<% end %>
+</table>
