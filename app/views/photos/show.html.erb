@@ -1,2 +1,39 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+<h1>Photo Details</h1>
+
+
+<dl>
+  <dt>
+  Image
+  </dt>
+  <dd>
+    <img src="<%= @photo_id.image %>" height="300px">
+  </dd>
+
+  <dt>
+    Caption
+  </dt>
+  <dd>
+    <%= @photo_id.caption %>
+  </dd>
+
+  <dt>
+    Owner
+  </dt>
+  <dd>
+    <%= @photo_id.owner_id %>
+  </dd>
+
+  <dt>
+    Posted
+  </dt>
+  <dd>
+    <%= @photo_id.created_at %>
+  </dd>
+
+  <dt>
+    <a href="/photos/<%= @photo_id.id %>/edit">Edit photo</a>
+  </dt>
+  <dd>
+    <form action=">
+  </dd>
+</dl>
