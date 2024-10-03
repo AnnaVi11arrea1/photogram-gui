@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get("/photos", :controller => "photos", :action => "index")
-  get("/photos/:the_id", :controller => "photos", :action => "show")
+  get("/photos/:id", :controller => "photos", :action => "show")
+  post("/add_comment/:id", :controller => "photos", :action => "add_comment")
 
   get("/", :controller => "users", :action => "index")
   get("/users", :controller => "users", :action => "index")

@@ -5,8 +5,21 @@ class PhotosController < ApplicationController
   end
 
   def show
-    the_id = params.fetch("the_id")
-    @photo_id = Photo.where({ :id => the_id}).at(0)
+    photo_id = params.fetch("id")
+    @photo = Photo.where({ :id => photo_id}).at(0)
+
     render({ :templates => "photos/show"})
+  end
+
+  def add_comment
+    photo_id = params.fetch("id")
+    @photo = Photo.where({ :id => photo_id }).at(0)
+    comment = Comment.new
+    comment.body = params.fetch("comment")
+    comment.author_id = params.fetch("author_id")
+    comment.photo_id = photo_id
+    comment.save
+
+    redirect_to("/photos/" + photo_id)
   end
 end

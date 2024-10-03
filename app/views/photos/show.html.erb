@@ -6,40 +6,40 @@
   Image
   </dt>
   <dd>
-    <img src="<%= @photo_id.image %>" height="300px">
+    <img src="<%= @photo.image %>" height="300px">
   </dd>
 
   <dt>
     Caption
   </dt>
   <dd>
-    <%= @photo_id.caption %>
+    <%= @photo.caption %>
   </dd>
 
   <dt>
     Owner
   </dt>
   <dd>
-    <%= @photo_id.owner_id %>
+    <%= @photo.owner_id %>
   </dd>
 
   <dt>
     Posted
   </dt>
   <dd>
-    <%= @photo_id.created_at %>
+    <%= @photo.created_at %>
   </dd>
 
   <dt>
     Edit Photo
   </dt>
     <dd>
-      <form action="/photos/<%= @photo_id %>/edit" method="post">Edit photo</a>
+      <form action="/photos/<%= @photo %>/edit" method="post">Edit photo</a>
       <label for="userphoto">Image</label>
-      <input id="userphoto" type="text" name="userphoto" placeholder="Enter a URL for the image..." value="<%= @photo_id.image %>">
+      <input id="userphoto" type="text" name="userphoto" placeholder="Enter a URL for the image..." value="<%= @photo.image %>">
 
       <label for="usercaption">Caption</label>
-      <input id="usercaption" type="text" name="usercaption" placeholder="Enter a caption for the image..." value="<%= @photo_id.caption %>">
+      <input id="usercaption" type="text" name="usercaption" placeholder="Enter a caption for the image..." value="<%= @photo.caption %>">
 
       <button type="submit">Update photo</button>
       </form>
@@ -49,29 +49,38 @@
       Delete Photo
     </dt>
     <dd>
-      <a href="/delete_photo/<%= @photo_id.id %>">Delete this photo</a>
+      <a href="/delete_photo/<%= @photo.id %>">Delete this photo</a>
     </dd>
 </dl>
 
 <h2>Comments</h2>
 
-<table>
+<table border="1">
   <tr>
     <th>Commnetor</th>
     <th>Comment</th>
     <th>Posted</th>
   </tr>
 
-<% the_id = params.fetch("the_id") %>
-<% matching_comments = Comment.where({:id => the_id})%>
-
-<% matching_comments.each do |comment| %>
-  <tr>
-    <td><%= matching_comments.author_id%></td>
-    <td><%= matching_comments.body %></td>
-    <td><%= matching_comments.created_at %></td>
-
-  </tr>
-
-<% end %>
+  <% @photo.comments.each do |comment| %>
+    <tr>
+      <td><%= comment.author_id %></td>
+      <td><%= comment.body %></td>
+      <td><%= comment.created_at %></td>
+    </tr>
+  <% end %>
 </table>
+
+<h2>Add a new comment</h2>
+<form action="/add_comment/<%= @photo.id %>" method="post">
+  <label for="photoid">Photo ID</label>
+  <input type="text" id="photoid" name="photo_id" value="<%= @photo.id %>" required>
+
+  <label for="authorid">Author ID</label>
+  <input type="text" id="authorid" name="author_id" placeholder="Enter your author ID" required>
+
+  <label for="photocomment">Comment</label>
+  <textarea id="photocomment" name="comment" placeholder="Enter your comment..." required></textarea>
+
+  <button type="submit">Add comment</button>
+</form>

@@ -11,7 +11,7 @@
 #
 
 class Comment < ApplicationRecord
-  validates(:commenter, { :presence => true })
+  # validates(:commenter, { :presence => true })
 
   def commenter
     my_author_id = self.author_id
