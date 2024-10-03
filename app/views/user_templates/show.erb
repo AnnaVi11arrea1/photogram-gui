@@ -6,7 +6,7 @@
 </div>
 
 <div>Edit user</div>
-<form action="/user_update" method="post">
+<form action="/user_update/<%= @user_id %>" method="post">
   <label for="edituser">Username</label>
   <input type="text" id="edituser" name="edit" value="<%= @matching_user.username %>">
   <button type="text">Update user</button>
@@ -34,7 +34,7 @@
   <td><%= photo.poster.username %></td>
   <td><%= photo.caption %></td>
   <td><%= photo.created_at %></td>
-  <td><a href="<% photo.id %>">Show Details</a></td>
+  <td><a href="/photos/<% photo.id %>">Show Details</a></td>
 </tr>
 <% end %>
 </table>

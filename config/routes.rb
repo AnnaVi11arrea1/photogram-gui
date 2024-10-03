@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get("/users", :controller => "users", :action => "index")
   get("/users/:the_id", :controller => "users", :action => "show")
   post("/user_add", :controller => "users", :action => "create")
-  post("/user_update/:the_id", :controller => "users", :action => "update")
+  post("/user_update/:id", :controller => "users", :action => "update")
 end
