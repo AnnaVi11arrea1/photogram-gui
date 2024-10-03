@@ -12,5 +12,29 @@
   <button type="text">Update user</button>
 </form>
 
-<% owned_photos = Photo.where({ :owner_id => @matching_user.id}) %>
+<% owned_photos = Photo.where({ :owner_id => @matching_user.id }) %>
 <h2>Own photos(<%= owned_photos.count %>)</h2>
+
+
+<table border="1">
+  <tr>
+    <th>Image</th>
+    <th>Owner</th>
+    <th>Caption</th>
+    <th>Posted</th>
+    <th></th>
+  </tr>
+
+<% owned_photos.each do |photo| %> 
+
+<tr>
+  <td>
+    <img src="<%= photo.image %>">
+  </td>
+  <td><%= photo.poster.username %></td>
+  <td><%= photo.caption %></td>
+  <td><%= photo.created_at %></td>
+  <td><a href="<% photo.id %>">Show Details</a></td>
+</tr>
+<% end %>
+</table>
