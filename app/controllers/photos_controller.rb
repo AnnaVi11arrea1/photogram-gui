@@ -30,6 +30,6 @@ class PhotosController < ApplicationController
     @photo.image = params.fetch("userphoto")
     @photo.save
 
-    redirect_to("/photos/#{photo.id}")
+    redirect_to("/photos/#{@photo.id}")
   end
 end
