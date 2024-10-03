@@ -31,9 +31,47 @@
   </dd>
 
   <dt>
-    <a href="/photos/<%= @photo_id.id %>/edit">Edit photo</a>
+    Edit Photo
   </dt>
-  <dd>
-    <form action=">
-  </dd>
+    <dd>
+      <form action="/photos/<%= @photo_id %>/edit" method="post">Edit photo</a>
+      <label for="userphoto">Image</label>
+      <input id="userphoto" type="text" name="userphoto" placeholder="Enter a URL for the image..." value="<%= @photo_id.image %>">
+
+      <label for="usercaption">Caption</label>
+      <input id="usercaption" type="text" name="usercaption" placeholder="Enter a caption for the image..." value="<%= @photo_id.caption %>">
+
+      <button type="submit">Update photo</button>
+      </form>
+    </dd>
+
+    <dt>
+      Delete Photo
+    </dt>
+    <dd>
+      <a href="/delete_photo/<%= @photo_id.id %>">Delete this photo</a>
+    </dd>
 </dl>
+
+<h2>Comments</h2>
+
+<table>
+  <tr>
+    <th>Commnetor</th>
+    <th>Comment</th>
+    <th>Posted</th>
+  </tr>
+
+<% the_id = params.fetch("the_id") %>
+<% matching_comments = Comment.where({:id => the_id})%>
+
+<% matching_comments.each do |comment| %>
+  <tr>
+    <td><%= matching_comments.author_id%></td>
+    <td><%= matching_comments.body %></td>
+    <td><%= matching_comments.created_at %></td>
+
+  </tr>
+
+<% end %>
+</table>
