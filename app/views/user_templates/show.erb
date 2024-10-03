@@ -1,1 +1,13 @@
 <h1><%= @matching_user.username %></h1>
+
+<div>ID</div>
+<div>
+<%= @matching_user.id%>
+</div>
+
+<div>Edit user</div>
+<form action="user/edit" method="post">
+  <label for="edituser">Username</label>
+  <input type="text" id="edituser" name="edit" value="<%= @matching_user.username %>">
+  <button type="text">Update user</button>
+</form>
