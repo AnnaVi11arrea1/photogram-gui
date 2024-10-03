@@ -32,4 +32,12 @@ class PhotosController < ApplicationController
 
     redirect_to("/photos/#{@photo.id}")
   end
+
+  def destroy
+    photo_id = params.fetch("id")
+    @photo = Photo.where({ :id => photo_id }).at(0)
+    @photo.destroy
+
+    redirect_to("/photos")
+  end
 end
