@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    matching_user = params.fetch("the_id")
-    @user = User.where({:id => matching_user.id}).at(0)
+    the_id = params.fetch("the_id")
+    @matching_user = User.where({:id => the_id}).at(0)
     render({:template => "user_templates/show"})
   end
 end
