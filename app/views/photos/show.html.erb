@@ -20,9 +20,7 @@
     Owner
   </dt>
   <dd>
-    <% owner_id = @photo.owner_id %>
-    <% user = User.where({:id => owner_id}) %>
-    <%= user.first.username %>
+    <%= @photo.poster.username %>
   </dd>
 
   <dt>
@@ -66,7 +64,10 @@
 
   <% @commenter.each do |comment| %>
     <tr>
-      <td><%= comment.author_id %></td>
+      <td><% comment.author_id %>
+            <% comment_owner = User.where({:id => comment.author_id}).at(0) %>
+            <%= comment_owner.username %>
+      </td>
       <td><%= comment.body %></td>
       <td><%= comment.created_at %></td>
     </tr>

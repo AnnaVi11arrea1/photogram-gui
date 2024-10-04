@@ -8,7 +8,7 @@
 <div>Edit user</div>
 <form action="/user_update/<%= @the_user %>" method="post">
   <label for="edituser">Username</label>
-  <input type="text" id="edituser" name="username" placeholder="<%= @the_user.username %>">
+  <input type="text" id="edituser" name="username" value="<%= @the_user.username %>">
   <button type="submit">Update user</button>
 </form>
 
