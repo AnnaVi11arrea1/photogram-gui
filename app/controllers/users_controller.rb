@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    the_username = params.fetch("user_name")
+    the_username = params.fetch("username")
     matching_usernames = User.where({:username => the_username})
     @matching_user = matching_usernames.at(0)
 
