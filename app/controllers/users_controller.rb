@@ -7,9 +7,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    the_id = params.fetch("the_id")
-    @matching_user = User.where({:id => the_id}).at(0)
-    render({:template => "user_templates/show"})
+    the_username = params.fetch("username")
+    matching_usernames = User.where({:username => the_username})
+    @matching_user = matching_usernames.at(0)
+
+    if @matching_user.nil?
+      redirect_to("/404")
+    else
+      render({:template => "user_templates/show"})
+    end
+
+
   end
 
   def update
