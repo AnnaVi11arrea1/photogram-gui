@@ -16,7 +16,7 @@
     <th>Username</th>
     <th></th>
   </tr>
-<% User.all.each do |user|%>
+<% @users.each do |user|%>
   <tr>
     <td><%= user.id %></td>
     <td><%= user.username %></td>
@@ -26,3 +26,4 @@
   </tr>
 <% end %>
 </table>
+ 

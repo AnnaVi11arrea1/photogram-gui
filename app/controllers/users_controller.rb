@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    all_users = User.all
+
+    @users = all_users.order({ :username => :asc }) 
     render({:template => "user_templates/index"})
   end
 
@@ -22,6 +24,6 @@ class UsersController < ApplicationController
     @user = User.new
     @user.username = params.fetch("user_name")
     @user.save
-    redirect_to("/users")
+    redirect_to("user_templates/show/#{ user.id }")
   end
 end
