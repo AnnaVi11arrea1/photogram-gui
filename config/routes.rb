@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
 
   get("/", :controller => "users", :action => "index")
+  post("/user_update/:id", :controller => "users", :action => "update")
   post("/user_add", :controller => "users", :action => "create")
   get("/users/:username", :controller => "users", :action => "show")
   get("/users", :controller => "users", :action => "index")
-  post("/user_update/:id", :controller => "users", :action => "update")
 
 end

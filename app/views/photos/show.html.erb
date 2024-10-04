@@ -20,7 +20,9 @@
     Owner
   </dt>
   <dd>
-    <%= @photo.owner_id %>
+    <% owner_id = @photo.owner_id %>
+    <% user = User.where({:id => owner_id}) %>
+    <%= user.first.username %>
   </dd>
 
   <dt>

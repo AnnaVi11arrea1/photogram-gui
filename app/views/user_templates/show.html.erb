@@ -6,10 +6,10 @@
 </div>
 
 <div>Edit user</div>
-<form action="/user_update/<%= @user_id %>" method="post">
+<form action="/user_update/<%= @the_user %>" method="post">
   <label for="edituser">Username</label>
-  <input type="text" id="edituser" namethe_id})me" value="<%= @the_user.username %>">
-  <button type="text">Update user</button>
+  <input type="text" id="edituser" name="username" placeholder="<%= @the_user.username %>">
+  <button type="submit">Update user</button>
 </form>
 
 <% owned_photos = Photo.where({ :owner_id => @the_user.id }) %>

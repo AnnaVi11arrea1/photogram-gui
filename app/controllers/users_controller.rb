@@ -20,10 +20,11 @@ class UsersController < ApplicationController
 
   def update
     the_id = params.fetch("id")
-    @matching_user = User.where({:id => the_id}).at(0)
-    @matching_user.username = params.fetch("username")
-    @matching_user.save
-    redirect_to("/users/#{matching_user.id }")
+    the_user = User.where({:id => the_id}).first
+    new_name = params.fetch("username")
+    new_name.save
+    redirect_to("/users/#{the_user.id}")
+
   end
 
   def create
