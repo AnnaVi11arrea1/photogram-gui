@@ -19,11 +19,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    the_id = params.fetch("id")
-    the_user = User.where({:id => the_id}).first
-    new_name = params.fetch("username")
-    new_name.save
-    redirect_to("/users/#{the_user.id}")
+    user_id = params.fetch("id")
+    @the_user = User.where({:id => user_id}).first
+    @the_user.username = params.fetch("username")
+    @the_user.save
+    redirect_to("/users/#{@the_user.id}")
 
   end
 
