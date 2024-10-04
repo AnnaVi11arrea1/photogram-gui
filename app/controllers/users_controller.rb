@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     matching_user = User.where({:username => the_username})
     @the_user = matching_user.at(0)
 
-    if @the_user.nil?
-      redirect_to("/404")
-    else
+    # if @the_user.nil?
+    #   redirect_to("/404")
+    # else
       render({:template => "user_templates/show"})
-    end
+    # end
   end
 
   def update
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @the_user = User.where({:id => user_id}).first
     @the_user.username = params.fetch("username")
     @the_user.save
-    redirect_to("/users/#{@the_user.id}")
+    redirect_to("/users/#{@the_user.username}")
 
   end
 
