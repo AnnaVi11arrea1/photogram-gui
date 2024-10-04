@@ -1,18 +1,18 @@
-<h1><%= @matching_user.username %></h1>
+<h1><%= @the_user.username %></h1>
 
 <div>ID</div>
 <div>
-<%= @matching_user.id%>
+<%= @the_user.id%>
 </div>
 
 <div>Edit user</div>
 <form action="/user_update/<%= @user_id %>" method="post">
   <label for="edituser">Username</label>
-  <input type="text" id="edituser" name="edit" value="<%= @matching_user.username %>">
+  <input type="text" id="edituser" namethe_id})me" value="<%= @the_user.username %>">
   <button type="text">Update user</button>
 </form>
 
-<% owned_photos = Photo.where({ :owner_id => @matching_user.id }) %>
+<% owned_photos = Photo.where({ :owner_id => @the_user.id }) %>
 <h2>Own photos(<%= owned_photos.count %>)</h2>
 
 
