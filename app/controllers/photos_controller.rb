@@ -8,6 +8,8 @@ class PhotosController < ApplicationController
     photo_id = params.fetch("id")
     @photo = Photo.where({ :id => photo_id}).at(0)
 
+    @commenter = Comment.all.where({ :photo_id => photo_id})
+
     render({ :templates => "photos/show"})
   end
 

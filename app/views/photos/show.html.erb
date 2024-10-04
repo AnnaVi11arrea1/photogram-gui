@@ -62,7 +62,7 @@
     <th>Posted</th>
   </tr>
 
-  <% @photo.comments.each do |comment| %>
+  <% @commenter.each do |comment| %>
     <tr>
       <td><%= comment.author_id %></td>
       <td><%= comment.body %></td>
